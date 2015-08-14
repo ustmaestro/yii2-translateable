@@ -134,7 +134,7 @@ class TranslateableBehavior extends Behavior
         $class = $this->owner->getRelation($this->translationRelation)->modelClass;
 		
 		/* If method create or update - populate attributes */
-		$className = (new \ReflectionClass($this->translationClass))->getShortName();
+		$className = (new \ReflectionClass($class))->getShortName();
 		foreach (Yii::$app->request->post($className, []) as $language => $data) {
             foreach ($data as $attribute => $translation) {
                 $this->owner->translate($language)->$attribute = $translation;
